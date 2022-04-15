@@ -1,0 +1,82 @@
+{
+  "name": "edugie-kitchen",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@material-ui/core": "^4.12.4",
+    "@mui/icons-material": "^5.6.0",
+    "@mui/material": "^5.6.0",
+    "@reacticons/ionicons": "^6.0.2",
+    "@stripe/react-stripe-js": "^1.7.1",
+    "@stripe/stripe-js": "^1.27.0",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/axios": "^0.14.0",
+    "autoprefixer": "^10.4.2",
+    "axios": "^0.26.1",
+    "ckeditor4-react": "^3.0.0",
+    "concat": "^1.0.3",
+    "dotenv": "^11.0.0",
+    "firebase": "^9.6.10",
+    "fs": "^0.0.1-security",
+    "ionicons": "^6.0.1",
+    "moment": "^2.29.2",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^9.1.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.2.1",
+    "react-country-region-selector": "^3.4.0",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-modal": "^3.14.4",
+    "react-redux": "^7.2.8",
+    "react-router-dom": "^6.2.2",
+    "redux": "^4.1.2",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "redux-saga": "^1.1.3",
+    "redux-thunk": "^2.4.1",
+    "reselect": "^4.1.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "https://eduge-admin-backend.herokuapp.com/",
+  "devDependencies": {
+    "@types/react": "^17.0.41",
+    "@types/react-dom": "^17.0.11",
+    "@types/styled-components": "^5.1.24",
+    "react-scripts": "5.0.0"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  }
+}
