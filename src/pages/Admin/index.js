@@ -106,16 +106,32 @@ const Admin = (props) => {
                   name: "Special Orders",
                 },
                 {
-                  value: "Lunch",
-                  name: "Lunch",
+                  value: "LUNCH / DINNER",
+                  name: "LUNCH / DINNER",
                 },
                 {
-                  value: "Beer",
-                  name: "Beer",
+                  value: "EXTRAS AND SIDE DISHES",
+                  name: "EXTRAS AND SIDE DISHES",
                 },
                 {
-                  value: "Wines",
-                  name: "Wines",
+                  value: "SOFT DRINKS",
+                  name: "SOFT DRINKS",
+                },
+                {
+                  value: "JUICE & YOGHURT",
+                  name: "JUICE & YOGHURT",
+                },
+                {
+                  value: "WINE & CREAM",
+                  name: "WINE & CREAM",
+                },
+                {
+                  value: "ENERGY DRINKS & BEERS",
+                  name: "ENERGY DRINKS & BEERS",
+                },
+                {
+                  value: "VSOP, VODKA, WHISKEY, SPIRITS & CHAMPAGNES",
+                  name: "VSOP, VODKA, WHISKEY, SPIRITS & CHAMPAGNES",
                 },
               ]}
               handleChange={(e) => setProductCategory(e.target.value)}
