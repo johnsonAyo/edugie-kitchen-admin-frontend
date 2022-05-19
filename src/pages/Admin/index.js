@@ -102,8 +102,8 @@ const Admin = (props) => {
                   name: "BREAKFAST",
                 },
                 {
-                  value: "Special Orders",
-                  name: "Special Orders",
+                  value: "SPECIAL ORDERS",
+                  name: "SPECIAL ORDERS",
                 },
                 {
                   value: "LUNCH / DINNER",
