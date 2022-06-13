@@ -4,7 +4,9 @@ import {
   addProductStart,
   fetchProductsStart,
   deleteProductStart,
+  editProductStart,
 } from "./../../redux/Products/products.actions";
+import axios from "axios";
 import Modal from "./../../components/Modal";
 import FormInput from "./../../components/forms/FormInput";
 import FormSelect from "./../../components/forms/FormSelect";
@@ -12,6 +14,12 @@ import Button from "./../../components/forms/Button";
 import LoadMore from "./../../components/LoadMore";
 import { CKEditor } from "ckeditor4-react";
 import "./styles.scss";
+import SimpleAccordion from "../../components/Accordion";
+
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -63,20 +71,28 @@ const Admin = (props) => {
         desc,
       })
     );
+    console.log("Add Form Details", title, img, price, desc);
     resetForm();
   };
 
-  const handleLoadMore = () => {
+  const handleEditSubmit = async (_id) => {
+    console.log({ "our id is: ": _id });
+    console.log("Form Details to edit", { title, img, price, desc });
     dispatch(
-      fetchProductsStart({
-        startAfterDoc: queryDoc,
-        persistProducts: data,
+      editProductStart({
+        _id,
+        category,
+        title,
+        img,
+        price,
+        desc,
       })
+      
     );
-  };
-
-  const configLoadMore = {
-    onLoadMoreEvt: handleLoadMore,
+    setProductName("");
+    setProductThumbnail("");
+    setProductPrice(0);
+    setProductDesc("");
   };
 
   return (
@@ -200,12 +216,12 @@ const Admin = (props) => {
                       products.data.data.data.map((product, index) => {
                         const { title, img, price, _id } = product;
 
-                        console.log(product, "Map");
+                        // console.log(product, "Map");
 
                         return (
                           <tr key={index}>
                             <td>
-                              <img className="thumb" src={img} />
+                              <img className="thumb" src={img} alt="" />
                             </td>
                             <td>{title}</td>
                             <td>₦{price}</td>
@@ -218,6 +234,95 @@ const Admin = (props) => {
                                 Delete
                               </Button>
                             </td>
+                            <td>
+                              <Button>
+                                <div>
+                                  <Accordion>
+                                    <AccordionSummary
+                                      expandIcon={<ExpandMoreIcon />}
+                                      aria-controls="panel1a-content"
+                                      id="panel1a-header"
+                                      className="blackie"
+                                    >
+                                      <h5 className=""> Edit Meal</h5>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                      <form
+                                        onSubmit={(e) => {
+                                          e.preventDefault();
+                                          handleEditSubmit(_id);
+                                        }}
+                                      >
+                                        <div>
+                                          <input
+                                            id="categories"
+                                            type="text"
+                                            placeholder="categories"
+                                            name="categories"
+                                            // value={category}
+                                            onChange={(e) =>
+                                              setProductCategory(e.target.value)
+                                            }
+                                          />
+                                        </div>
+                                        <div>
+                                          <input
+                                            id="name"
+                                            type="text"
+                                            placeholder="Name"
+                                            name="name"
+                                            // value={title}
+                                            onChange={(e) => {
+                                              console.log("title changed");
+                                              setProductName(e.target.value);
+                                            }}
+                                          />
+                                        </div>
+                                        <div>
+                                          <input
+                                            id="img"
+                                            type="text"
+                                            placeholder="Image Url"
+                                            name="img"
+                                            // value={img}
+                                            onChange={(e) =>
+                                              setProductThumbnail(
+                                                e.target.value
+                                              )
+                                            }
+                                          />
+                                        </div>
+                                        <div>
+                                          <input
+                                            id="desc"
+                                            type="text"
+                                            placeholder="description"
+                                            name="description"
+                                            // value={desc}
+                                            onChange={(e) =>
+                                              setProductDesc(e.target.value)
+                                            }
+                                          />
+                                        </div>
+                                        <div>
+                                          <input
+                                            id="price"
+                                            type="text"
+                                            placeholder="price"
+                                            name="price"
+                                            // value={price}
+                                            onChange={(e) =>
+                                              setProductPrice(e.target.value)
+                                            }
+                                          />
+                                        </div>
+                                        <input  className="submit-btn btn" type="submit" value="submit" />
+                                      </form>
+                                    </AccordionDetails>
+                                  </Accordion>
+                                </div>
+                              </Button>
+                            </td>
                           </tr>
                         );
                       })}
@@ -227,17 +332,6 @@ const Admin = (props) => {
             </tr>
             <tr>
               <td></td>
-            </tr>
-            <tr>
-              <td>
-                <table border="0" cellPadding="10" cellSpacing="0">
-                  <tbody>
-                    <tr>
-                      <td>{!isLastPage && <LoadMore {...configLoadMore} />}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
             </tr>
           </tbody>
         </table>

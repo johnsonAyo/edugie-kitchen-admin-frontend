@@ -9,6 +9,7 @@ import {
   handleFetchProducts,
   handleFetchProduct,
   handleDeleteProduct,
+  handleEditProduct,
 } from "./products.helpers";
 import productsTypes from "./products.types";
 
@@ -55,6 +56,19 @@ export function* onDeleteProductStart() {
   yield takeLatest(productsTypes.DELETE_PRODUCT_START, deleteProduct);
 }
 
+export function* editProduct({ payload }) {
+  try {
+    yield handleEditProduct(payload);
+    yield put(fetchProductsStart());
+  } catch (err) {
+    // console.log(err);
+  }
+}
+
+export function* onEditProductStart() {
+  yield takeLatest(productsTypes.EDIT_PRODUCT_START, editProduct);
+}
+
 export function* fetchProduct({ payload }) {
   try {
     const product = yield handleFetchProduct(payload);
@@ -74,5 +88,6 @@ export default function* productsSagas() {
     call(onFetchProductsStart),
     call(onDeleteProductStart),
     call(onFetchProductStart),
+    call(onEditProductStart)
   ]);
 }

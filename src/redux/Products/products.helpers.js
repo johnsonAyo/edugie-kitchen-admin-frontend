@@ -18,13 +18,12 @@ export const handleFetchProducts = async ({
   startAfterDoc,
   persistProducts = [],
 }) => {
-  console.log("*******");
   try {
     const { data } = await axios({
       url: url,
       method: "GET",
     });
-    console.log(data);
+    // console.log(data);
     return {
       data,
     };
@@ -33,56 +32,31 @@ export const handleFetchProducts = async ({
   }
 };
 
-// export const handleFetchProducts = ({
-//   filterType,
-//   startAfterDoc,
-//   persistProducts = [],
-// }) => {
-//   return new Promise((resolve, reject) => {
-//     const pageSize = 6;
-
-//     let ref = firestore
-//       .collection("products")
-//       .orderBy("createdDate")
-//       .limit(pageSize);
-
-//     if (filterType) ref = ref.where("productCategory", "==", filterType);
-//     if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
-
-//     ref
-//       .get()
-//       .then((snapshot) => {
-//         const totalCount = snapshot.size;
-
-//         const data = [
-//           ...persistProducts,
-//           ...snapshot.docs.map((doc) => {
-//             return {
-//               ...doc.data(),
-//               documentID: doc.id,
-//             };
-//           }),
-//         ];
-
-//         resolve({
-//           data,
-//           queryDoc: snapshot.docs[totalCount - 1],
-//           isLastPage: totalCount < 1,
-//         });
-//       })
-//       .catch((err) => {
-//         reject(err);
-//       });
-//   });
-// };
-
 export const handleDeleteProduct = async (documentID) => {
   try {
     const { data } = await axios({
       url: `${url}/${documentID}`,
       method: "DELETE",
     });
-    console.log(data);
+    // console.log(data);
+  } catch (err) {
+    console.log(err.response.data);
+  }
+};
+
+export const handleEditProduct = async (product) => {
+  try {
+    Object.keys(product).forEach((key) => {
+      if (!product[key]) {
+        delete product[key];
+      }
+    });
+    const { data } = await axios({
+      url: `${url}/${product._id}`,
+      method: "PATCH",
+      data: product,
+    });
+    console.log("This is the edited Data", product, data);
   } catch (err) {
     console.log(err.response.data);
   }
@@ -94,7 +68,7 @@ export const handleFetchProduct = async (productID) => {
       url: `${url}/${productID}`,
       method: "GET",
     });
-    console.log(data);
+    // console.log(data);
   } catch (err) {
     console.log(err.response.data);
   }

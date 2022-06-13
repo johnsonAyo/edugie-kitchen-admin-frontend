@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/johnsonafuye/Desktop/Project/Live project/edugie-admin-frontend'
+make: Leaving directory `/Users/johnsonafuye/Desktop/Project/Live project/edugie-admin-frontend'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
