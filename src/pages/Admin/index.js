@@ -6,15 +6,12 @@ import {
   deleteProductStart,
   editProductStart,
 } from "./../../redux/Products/products.actions";
-import axios from "axios";
 import Modal from "./../../components/Modal";
 import FormInput from "./../../components/forms/FormInput";
 import FormSelect from "./../../components/forms/FormSelect";
 import Button from "./../../components/forms/Button";
-import LoadMore from "./../../components/LoadMore";
-import { CKEditor } from "ckeditor4-react";
+
 import "./styles.scss";
-import SimpleAccordion from "../../components/Accordion";
 
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -87,7 +84,6 @@ const Admin = (props) => {
         price,
         desc,
       })
-      
     );
     setProductName("");
     setProductThumbnail("");
@@ -316,7 +312,11 @@ const Admin = (props) => {
                                             }
                                           />
                                         </div>
-                                        <input  className="submit-btn btn" type="submit" value="submit" />
+                                        <input
+                                          className="submit-btn btn"
+                                          type="submit"
+                                          value="submit"
+                                        />
                                       </form>
                                     </AccordionDetails>
                                   </Accordion>
