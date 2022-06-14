@@ -110,6 +110,10 @@ const Admin = (props) => {
               label="Category"
               options={[
                 {
+                  value: "",
+                  name: "--SELECT CATEGORY--",
+                },
+                {
                   value: "BREAKFAST",
                   name: "BREAKFAST",
                 },
@@ -250,19 +254,59 @@ const Admin = (props) => {
                                         }}
                                       >
                                         <div>
-                                          <input
-                                            id="categories"
-                                            type="text"
-                                            placeholder="categories"
-                                            name="categories"
-                                            // value={category}
+                                          <FormSelect
+                                            options={[
+                                              {
+                                                value: "",
+                                                name: "--SELECT CATEGORY--",
+                                              },
+                                              {
+                                                value: "BREAKFAST",
+                                                name: "BREAKFAST",
+                                              },
+                                              {
+                                                value: "SPECIAL ORDERS",
+                                                name: "SPECIAL ORDERS",
+                                              },
+                                              {
+                                                value: "LUNCH / DINNER",
+                                                name: "LUNCH / DINNER",
+                                              },
+                                              {
+                                                value: "EXTRAS AND SIDE DISHES",
+                                                name: "EXTRAS AND SIDE DISHES",
+                                              },
+                                              {
+                                                value: "SOFT DRINKS",
+                                                name: "SOFT DRINKS",
+                                              },
+                                              {
+                                                value: "JUICE & YOGHURT",
+                                                name: "JUICE & YOGHURT",
+                                              },
+                                              {
+                                                value: "WINE & CREAM",
+                                                name: "WINE & CREAM",
+                                              },
+                                              {
+                                                value: "ENERGY DRINKS & BEERS",
+                                                name: "ENERGY DRINKS & BEERS",
+                                              },
+                                              {
+                                                value:
+                                                  "VSOP, VODKA, WHISKEY, SPIRITS & CHAMPAGNES",
+                                                name: "VSOP, VODKA, WHISKEY, SPIRITS & CHAMPAGNES",
+                                              },
+                                            ]}
                                             onChange={(e) =>
                                               setProductCategory(e.target.value)
                                             }
                                           />
+                                          
                                         </div>
                                         <div>
                                           <input
+                                            className="formInput"
                                             id="name"
                                             type="text"
                                             placeholder="Name"
@@ -276,6 +320,7 @@ const Admin = (props) => {
                                         </div>
                                         <div>
                                           <input
+                                            className="formInput"
                                             id="img"
                                             type="text"
                                             placeholder="Image Url"
@@ -290,6 +335,7 @@ const Admin = (props) => {
                                         </div>
                                         <div>
                                           <input
+                                            className="formInput"
                                             id="desc"
                                             type="text"
                                             placeholder="description"
@@ -302,6 +348,7 @@ const Admin = (props) => {
                                         </div>
                                         <div>
                                           <input
+                                            className="formInput"
                                             id="price"
                                             type="text"
                                             placeholder="price"
