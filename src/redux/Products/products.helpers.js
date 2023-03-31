@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://eduge-admin-backend.herokuapp.com/api/meal";
+const url = "https://edugie-admin-backend.onrender.com/api/meal";
 export const handleAddProduct = async (product) => {
   try {
     const { data } = await axios({
